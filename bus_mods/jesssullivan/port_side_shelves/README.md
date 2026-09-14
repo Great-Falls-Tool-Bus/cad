@@ -12,8 +12,12 @@ Stick-framed shelving for the port (driver's) side of the Great Falls Tool Bus: 
 | 2×6 × 8 ft | 10 | 18 posts in 6 lengths |
 | ⅜″ plywood, 4×8 | 5 | 15 panels, all 32″ deep; 2 strips spare |
 
-Full cut list with per-board patterns, sheet layouts and a dimensioned drawing of every unique plywood panel: [`docs/cut_list.pdf`](docs/cut_list.pdf) (built from [`docs/cut_list.tex`](docs/cut_list.tex) →
-`bazel build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list` → `bazel-bin/.../cut_list.pdf`).
+Full cut list with per-board patterns, sheet layouts and a dimensioned drawing of every unique plywood panel: [`pdfs/cut_list.pdf`](pdfs/cut_list.pdf), built from [`docs/cut_list.tex`](docs/cut_list.tex):
+
+```sh
+bazel build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list
+cp bazel-bin/bus_mods/jesssullivan/port_side_shelves/docs/cut_list.pdf bus_mods/jesssullivan/port_side_shelves/pdfs/
+```
 The stock plan is the exact cutting-stock optimum for 8-foot boards with ⅛″ kerf ([`docs/cutstock.py`](docs/cutstock.py)); the panel drawings are generated from the model ([`docs/ply_patterns.py`](docs/ply_patterns.py) over `docs/ply_outlines.json`, harvested via the Fusion MCP).
 
 ## CAD

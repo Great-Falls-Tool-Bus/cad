@@ -8,8 +8,9 @@ cad:
 - CAD/port_side_shelves.step
 docs:
 - docs/cut_list.tex
-- docs/cut_list.pdf
 - docs/ply_patterns.tex
+pdfs:
+- pdfs/cut_list.pdf
 images:
 - images/in_bus_context_iso.png
 - images/port_side_shelves_iso.png
