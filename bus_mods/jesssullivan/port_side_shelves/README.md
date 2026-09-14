@@ -52,3 +52,6 @@ Port Side Shelves (Assembly)
 - Plywood is crosscut into three 32 × 48 strips per sheet; two kerfs leave the third strip at 31¾″ — use those for the 24″ panels and the 31″ step so the ten full shelves stay full depth.
 - Plywood notches are drawn with dimensions in the cut list (every unique panel); still check against the installed posts before cutting.
 - The 16 × 24″ 2×4 offcuts from the 72″ rails aren't used by this design — nothing here is shorter than 29″.
+
+Cheers,
+-Jess
