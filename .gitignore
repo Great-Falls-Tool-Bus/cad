@@ -1,0 +1,13 @@
+# bazel
+bazel-*
+MODULE.bazel.lock
+# direnv / nix
+.direnv/
+result
+# editors / os
+.DS_Store
+*.swp
+# tectonic scratch when compiled outside bazel
+*.aux
+*.log
+*.synctex.gz

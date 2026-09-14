@@ -1,0 +1,21 @@
+"""GFTB cad: shelving and related CAD drawings for the Great Falls Tool Bus.
+
+Documents (cut lists, build sheets) are LaTeX compiled with rules_tectonic.
+rules_tectonic is not on the BCR yet, so it is pinned to a signed GitHub
+release archive via archive_override.
+"""
+
+module(
+    name = "gftb_cad",
+    version = "0.1.0",
+)
+
+bazel_dep(name = "rules_tectonic", version = "0.2.2")
+archive_override(
+    module_name = "rules_tectonic",
+    integrity = "sha256-onQ9uzDTQCdvCi7KPu/8S5c2tGFYFEIf2zX10ya0HRI=",
+    strip_prefix = "rules_tectonic-0.2.2",
+    urls = ["https://github.com/Jesssullivan/rules_tectonic/releases/download/v0.2.2/rules_tectonic-v0.2.2.tar.gz"],
+)
+
+bazel_dep(name = "buildifier_prebuilt", version = "8.5.1.2", dev_dependency = True)

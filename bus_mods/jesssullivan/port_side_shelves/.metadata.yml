@@ -1,0 +1,21 @@
+title: Port-side shelves
+description: Stick-framed 2x4 / 2x6 shelving with 3/8 in plywood decks for the port side of the bus; three stepped bays, 175.5 x 32 x 72 in.
+mod_version: 1
+vehicle_compatibility:
+- bus-hybrid
+cad:
+- CAD/bus_hybrid_assy.f3d
+- CAD/port_side_shelves.step
+- CAD/bus_hybrid_assy.step
+docs:
+- docs/cut_list.tex
+images:
+- images/in_bus_context_iso.png
+- images/port_side_shelves_iso.png
+- images/port_side_shelves_iso_rear.png
+- images/port_side_shelves_front.png
+- images/port_side_shelves_top.png
+materials:
+- 34 x 2x4 x 8 ft
+- 10 x 2x6 x 8 ft
+- 5 x 3/8 in plywood 4x8

@@ -1,0 +1,11 @@
+load("@rules_tectonic//tectonic:defs.bzl", "tectonic_pdf")
+
+package(default_visibility = ["//visibility:public"])
+
+# bazel build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list
+# -> bazel-bin/bus_mods/jesssullivan/port_side_shelves/docs/cut_list.pdf
+tectonic_pdf(
+    name = "cut_list",
+    src = "cut_list.tex",
+    reruns = 1,
+)
