@@ -1,0 +1,23 @@
+load("@buildifier_prebuilt//:rules.bzl", "buildifier")
+
+package(default_visibility = ["//visibility:public"])
+
+# Every document target in the repo, so `bazel build //:docs` builds all PDFs.
+filegroup(
+    name = "docs",
+    srcs = [
+        "//bus_mods/jesssullivan/port_side_shelves/docs:cut_list",
+    ],
+)
+
+buildifier(
+    name = "buildifier.check",
+    lint_mode = "warn",
+    mode = "diff",
+)
+
+buildifier(
+    name = "buildifier.fix",
+    lint_mode = "fix",
+    mode = "fix",
+)
