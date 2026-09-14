@@ -38,11 +38,11 @@
 \newcommand{\inch}[1]{#1\,in}
 \newcommand{\lf}[1]{#1\,lf}
 \newcommand{\kerf}{\tfrac{1}{8}}
-\newcommand{\tt}[1]{\texttt{#1}}
+\newcommand{\cutdim}[1]{\texttt{#1}}
 
 % ---- cut-pattern bar: \cutbar{stock}{ {len1, len2, ...} }{label}
-% scale: 1 in = 0.168 cm  ->  96 in = 16.13 cm
-\newcommand{\barscale}{0.168}
+% scale: 1 in = 0.152 cm  ->  96 in = 14.6 cm
+\newcommand{\barscale}{0.152}
 \newcommand{\cutbar}[3]{%
   \begin{tikzpicture}[x=\barscale cm,y=1cm,baseline=(current bounding box.center)]
     \node[anchor=east,text width=2.6cm,align=right,font=\small\bfseries] at (-2,0.32) {#3};
@@ -62,7 +62,7 @@
 
 % ================= title block =================
 \begin{tabularx}{\textwidth}{@{}X r@{}}
-  {\fontsize{26}{28}\selectfont\bfseries PORT-SIDE SHELVES — CUT LIST} &
+  {\fontsize{21}{23}\selectfont\bfseries PORT-SIDE SHELVES\newline CUT LIST} &
   \begin{tabular}[b]{@{}ll@{}}
     \textcolor{ink2}{\scriptsize SOURCE}   & \small Fusion · project \emph{Bus} · Bus-Hybrid-Assy \\
     \textcolor{ink2}{\scriptsize REVISION} & \small 2026-09-14, refactored tree \\
@@ -96,11 +96,11 @@ Every stick and sheet in the shelving unit, as a shopping list, per-board cut pa
 \toprule
 \textbf{Cut} & \textbf{Qty} & \textbf{Used as} \\
 \midrule
-\tt{72}  & 16 & front/back rails, 8 frames × 2 \\
-\tt{29}  & 52 & cross members, 49 in frames + 3 floor cleats \\
-\tt{31}  &  2 & rails, low-step frame \\
+\cutdim{72}  & 16 & front/back rails, 8 frames × 2 \\
+\cutdim{29}  & 52 & cross members, 49 in frames + 3 floor cleats \\
+\cutdim{31}  &  2 & rails, low-step frame \\
 \midrule
-net & 70 & \tt{2722 in = 226.8 lf} \\
+net & 70 & \cutdim{2722 in = 226.8 lf} \\
 \bottomrule
 \end{tabular}
 \end{minipage}\hfill
@@ -121,14 +121,14 @@ net & 70 & \tt{2722 in = 226.8 lf} \\
 \toprule
 \textbf{Cut} & \textbf{Qty} & \textbf{Where} \\
 \midrule
-\tt{72}   & 2 & Bay A left end, floor (z 9½) to top \\
-\tt{62.5} & 6 & full-height posts, x 1½ / 41 / 128 \\
-\tt{50.5} & 2 & Bay C posts off the z 31 frame, x 77 \\
-\tt{30.5} & 4 & Bay B lower posts, x 97 / 113 \\
-\tt{25}   & 2 & low-step posts, x −1½ \\
-\tt{18.5} & 2 & Bay B short posts, x 60¾ \\
+\cutdim{72}   & 2 & Bay A left end, floor (z 9½) to top \\
+\cutdim{62.5} & 6 & full-height posts, x 1½ / 41 / 128 \\
+\cutdim{50.5} & 2 & Bay C posts off the z 31 frame, x 77 \\
+\cutdim{30.5} & 4 & Bay B lower posts, x 97 / 113 \\
+\cutdim{25}   & 2 & low-step posts, x −1½ \\
+\cutdim{18.5} & 2 & Bay B short posts, x 60¾ \\
 \midrule
-net & 18 & \tt{829 in = 69.1 lf} \\
+net & 18 & \cutdim{829 in = 69.1 lf} \\
 \bottomrule
 \end{tabular}
 \end{minipage}\hfill
@@ -148,7 +148,7 @@ net & 18 & \tt{829 in = 69.1 lf} \\
 Crosscut each 4×8 sheet across its length into three 32~×~48 strips (cuts at 32 and 64). Ten strips go up as-is; two are halved into 24~×~32; one is trimmed to 31~×~32 for the low step. Two strips are spare.
 
 \begin{center}
-\begin{tikzpicture}[x=0.11cm,y=0.11cm]
+\begin{tikzpicture}[x=0.088cm,y=0.088cm]
   % sheet 1-3
   \begin{scope}
     \fill[ply] (0,0) rectangle (96,48); \draw[ink] (0,0) rectangle (96,48);
@@ -157,7 +157,7 @@ Crosscut each 4×8 sheet across its length into three 32~×~48 strips (cuts at 3
     \node[anchor=south west,font=\footnotesize\bfseries] at (0,49) {Sheets 1–3 (×3)};
   \end{scope}
   % sheet 4
-  \begin{scope}[xshift=11.5cm]
+  \begin{scope}[xshift=9.3cm]
     \fill[ply] (0,0) rectangle (96,48); \draw[ink] (0,0) rectangle (96,48);
     \draw[ink] (32,0)--(32,48) (64,0)--(64,48);
     \draw[ink] (32,24)--(96,24);
@@ -166,7 +166,7 @@ Crosscut each 4×8 sheet across its length into three 32~×~48 strips (cuts at 3
     \node[anchor=south west,font=\footnotesize\bfseries] at (0,49) {Sheet 4};
   \end{scope}
   % sheet 5
-  \begin{scope}[yshift=-6.4cm]
+  \begin{scope}[yshift=-5.3cm]
     \fill[ply] (0,0) rectangle (96,48); \draw[ink] (0,0) rectangle (96,48);
     \draw[ink] (32,0)--(32,48) (64,0)--(64,48);
     \fill[waste] (0,0) rectangle (32,17); \draw[ink] (0,17)--(32,17);
@@ -182,50 +182,53 @@ Crosscut each 4×8 sheet across its length into three 32~×~48 strips (cuts at 3
 \toprule
 \textbf{Panel} & \textbf{Qty} & \textbf{Deck (z = top of frame)} & \textbf{Notches} \\
 \midrule
-\tt{32 × 48} &  2 & z 81½ top, Bay A and Bay C & none \\
-\tt{32 × 48} &  8 & z 34½ ×3 · z 49½ ×3 · z 69½ ×2 & post notches, 7 variants (A–G) \\
-\tt{24 × 32} &  2 & z 81½ top & none \\
-\tt{24 × 32} &  2 & z 69½, ends of Bay A / Bay C & post notches (A, B) \\
-\tt{31 × 32} &  1 & z 22½ low step & post notches \\
+\cutdim{32 × 48} &  2 & z 81½ top, Bay A and Bay C & none \\
+\cutdim{32 × 48} &  8 & z 34½ ×3 · z 49½ ×3 · z 69½ ×2 & post notches, 7 patterns (A–G), drawn below \\
+\cutdim{24 × 32} &  2 & z 81½ top & none \\
+\cutdim{24 × 32} &  2 & z 69½, ends of Bay A / Bay C & post notches (A, B), drawn below \\
+\cutdim{31 × 32} &  1 & z 22½ low step & post notches \\
 \midrule
-net & 15 & \multicolumn{2}{l}{\tt{19,424 in² = 4.22 sheets → 5}} \\
+net & 15 & \multicolumn{2}{l}{\cutdim{19,424 in² = 4.22 sheets → 5}} \\
 \bottomrule
 \end{tabularx}
 
-{\small\textcolor{ink2}{Notch positions live on the individual \tt{Ply … notch A–G} components in Fusion. Scribe them off the installed posts rather than pre-cutting from a drawing.}}
+\subsection*{Panel patterns}
+Every unique panel outline, read from the model. Notch callouts are \cutdim{offset + width} from the panel's left edge (as installed, looking down); front-edge notches are labelled below the panel, back-edge above. All notches are 7~in deep unless the panel says otherwise. Mark them from these dimensions, then check against the installed posts before cutting.
+
+\noindent\input{ply_patterns.tex}
+
 
 % ================= assembly =================
 \section*{How the parts are grouped in Fusion}
 Same 103 bodies, now as 21 reusable part components inside reusable frames (42 components total, down from 104). Identical frames are one component placed more than once, so editing a frame edits every level that uses it.
 
-{\small\ttfamily\begin{tabbing}
-xxxx\=xxxx\=xxxx\=\kill
-Port Side Shelves (Assembly)\\
-\>Posts (2x6) \> \> 18 posts · 6 part types\\
-\>Bay A – Left, x −28..44\\
-\>\>Frame A z19  (31 in rails, 3 cross)   \>×1\\
-\>\>Frame A z31/z46/z78 (72 in rails, 5 cross) \>\textbf{×3 — one component}\\
-\>\>Frame A z66  (72 in rails, 6 cross)   \>×1\\
-\>Bay B – Center lower, x 44..116\\
-\>\>Frame B z31/z46 (72 in rails, 7 cross) \>\textbf{×2 — one component}\\
-\>Bay C – Right upper, x 75½..147½\\
-\>\>Frame C z66  (72 in rails, 6 cross)   \>×1\\
-\>\>Frame C z78  (72 in rails, 5 cross)   \>×1\\
-\>Floor cleats z19 (2x4) \> \> 3 × 29 in\\
-\>Decks (3/8 ply) \> \> z 22½ (1) · z 34½ (3) · z 49½ (3) · z 69½ (4) · z 81½ (4)
-\end{tabbing}}
+{\small\begin{verbatim}
+Port Side Shelves (Assembly)
+  Posts (2x6)                                   18 posts, 6 part types
+  Bay A - Left, x -28..44
+    Frame A z19          (31 in rails, 3 cross)   x1
+    Frame A z31/z46/z78  (72 in rails, 5 cross)   x3  <- one component
+    Frame A z66          (72 in rails, 6 cross)   x1
+  Bay B - Center lower, x 44..116
+    Frame B z31/z46      (72 in rails, 7 cross)   x2  <- one component
+  Bay C - Right upper, x 75.5..147.5
+    Frame C z66          (72 in rails, 6 cross)   x1
+    Frame C z78          (72 in rails, 5 cross)   x1
+  Floor cleats z19 (2x4)                        3 x 29 in
+  Decks (3/8 ply)                               z 22.5 (1)  34.5 (3)  49.5 (3)  69.5 (4)  81.5 (4)
+\end{verbatim}}
 
 % ================= notes =================
 \section*{Read before cutting}
 \begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
   \item \textbf{Three duplicate cross members were removed} from the model — exact overlapping copies at (x 42½, z 19), (x 42½, z 66) and (x 23½, z 66). They would have added 3 × 29 in to the count.
   \item \textbf{Plywood strips run ¼ in short.} Two kerfs across a 96-inch sheet leave the third strip at 31¾ in. Put those five short strips on the 24-inch panels and the 31-inch step so all ten 32~×~48 shelves are full depth.
-  \item \textbf{Check board length before the tight patterns.} \tt{50.5 + 25 + 18.5} leaves 1¾ in and \tt{62.5 + 30.5} leaves 2⅞ in; stud-grade 8-footers can run ¼ in short.
+  \item \textbf{Check board length before the tight patterns.} \cutdim{50.5 + 25 + 18.5} leaves 1¾ in and \cutdim{62.5 + 30.5} leaves 2⅞ in; stud-grade 8-footers can run ¼ in short.
   \item \textbf{The 24-inch 2×4 offcuts} (16 of them) are not used by this design.
   \item \textbf{Materials in Fusion were set to Pine / Plywood, Finish.} Bodies had been carrying a Steel physical material, so mass properties were ~14× high. Appearances unchanged.
 \end{enumerate}
 
 \vfill
-{\footnotesize\textcolor{ink2}{Cut optimisation: exact cutting-stock ILP over all patterns that fit an 8-ft board with ⅛ in kerf (\tt{docs/cutstock.py}). Geometry read from the Fusion model via the Fusion MCP; positions in this sheet are design-space inches.}}
+{\footnotesize\textcolor{ink2}{Cut optimisation: exact cutting-stock ILP over all patterns that fit an 8-ft board with ⅛ in kerf (\cutdim{docs/cutstock.py}). Geometry read from the Fusion model via the Fusion MCP; positions in this sheet are design-space inches.}}
 
 \end{document}

@@ -6,9 +6,10 @@ vehicle_compatibility:
 cad:
 - CAD/bus_hybrid_assy.f3d
 - CAD/port_side_shelves.step
-- CAD/bus_hybrid_assy.step
 docs:
 - docs/cut_list.tex
+- docs/cut_list.pdf
+- docs/ply_patterns.tex
 images:
 - images/in_bus_context_iso.png
 - images/port_side_shelves_iso.png

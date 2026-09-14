@@ -12,9 +12,9 @@ Stick-framed shelving for the port (driver's) side of the Great Falls Tool Bus: 
 | 2×6 × 8 ft | 10 | 18 posts in 6 lengths |
 | ⅜″ plywood, 4×8 | 5 | 15 panels, all 32″ deep; 2 strips spare |
 
-Full cut list with per-board patterns and sheet layouts: [`docs/cut_list.tex`](docs/cut_list.tex) →
-`bazel build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list` → `bazel-bin/.../cut_list.pdf`.
-The stock plan is the exact cutting-stock optimum for 8-foot boards with ⅛″ kerf ([`docs/cutstock.py`](docs/cutstock.py)).
+Full cut list with per-board patterns, sheet layouts and a dimensioned drawing of every unique plywood panel: [`docs/cut_list.pdf`](docs/cut_list.pdf) (built from [`docs/cut_list.tex`](docs/cut_list.tex) →
+`bazel build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list` → `bazel-bin/.../cut_list.pdf`).
+The stock plan is the exact cutting-stock optimum for 8-foot boards with ⅛″ kerf ([`docs/cutstock.py`](docs/cutstock.py)); the panel drawings are generated from the model ([`docs/ply_patterns.py`](docs/ply_patterns.py) over `docs/ply_outlines.json`, harvested via the Fusion MCP).
 
 ## CAD
 
@@ -22,7 +22,6 @@ The stock plan is the exact cutting-stock optimum for 8-foot boards with ⅛″ 
 | --- | --- |
 | `CAD/bus_hybrid_assy.f3d` | Fusion archive of the whole design (bus body + shelves) |
 | `CAD/port_side_shelves.step` | The shelving assembly only |
-| `CAD/bus_hybrid_assy.step` | Whole design |
 
 The Fusion tree is organised for reuse: 21 part components (one per cut length / plywood shape) placed inside frame sub-assemblies, and identical frames are one component placed several times — Bay A's z 31/46/78 frames are a single component ×3, Bay B's z 31/46 frames a single component ×2. Edit a frame once and every level that uses it follows.
 
@@ -47,5 +46,5 @@ Port Side Shelves (Assembly)
 
 - Cross members are 29″ = 32″ depth − two 1½″ rails. Rails are 72″ per bay; the low step is the only 31″ bay.
 - Plywood is crosscut into three 32 × 48 strips per sheet; two kerfs leave the third strip at 31¾″ — use those for the 24″ panels and the 31″ step so the ten full shelves stay full depth.
-- Plywood notches around the posts are on the individual `Ply … notch A–G` components in Fusion; scribe them off the installed posts rather than pre-cutting.
+- Plywood notches are drawn with dimensions in the cut list (every unique panel); still check against the installed posts before cutting.
 - The 16 × 24″ 2×4 offcuts from the 72″ rails aren't used by this design — nothing here is shorter than 29″.
