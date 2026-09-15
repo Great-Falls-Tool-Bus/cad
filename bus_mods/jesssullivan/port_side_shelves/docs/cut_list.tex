@@ -75,6 +75,22 @@
 \vspace{2pt}\hrule height 1.2pt\vspace{6pt}
 Every stick and sheet in the shelving unit, as a shopping list, per-board cut patterns, and the sub-assembly each part belongs to. Lengths are finished cut lengths in inches. Stock sizes are nominal; 2×4 is 1½~×~3½ actual, 2×6 is 1½~×~5½, all bought in 8-foot lengths.
 
+\vspace{4pt}
+\noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{%
+\textbf{If three shelves up instead of four} — removing the two topmost shelves (Bay A and Bay C at z\,81½, with their z\,78 frames) changes the buy to:
+\begin{center}\small
+\begin{tabularx}{\dimexpr\textwidth-2\fboxsep-2\fboxrule-8pt}{@{}l r r r X@{}}
+\toprule
+\textbf{Stock} & \textbf{4 shelves} & \textbf{3 shelves} & \textbf{Fewer to buy} & \textbf{What drops out} \\
+\midrule
+2×4 × 8 ft & 34 & 27 & \textbf{−7} & 4 × 72 rails and 10 × 29 cross members; patterns become 12 → 72, 14 → 29+29+29, 1 → 31+31 \\
+2×6 × 8 ft & 10 & 10 & \textbf{0} & nothing — leave the posts full height for a later top deck, or cut them 12 in shorter; the board count is the same either way \\
+⅜ in plywood, 4×8 & 5 & 4 & \textbf{−1} & 2 × 32×48 and 2 × 24×32; 10 strips from 4 sheets, 2 spare \\
+\bottomrule
+\end{tabularx}
+\end{center}
+Everything below is the four-shelf build.}}
+
 % ================= shopping list =================
 \section*{Shopping list}
 \begin{tabularx}{\textwidth}{@{}l r X r r@{}}
@@ -217,18 +233,5 @@ Port Side Shelves (Assembly)
   Floor cleats z19 (2x4)                        3 x 29 in
   Decks (3/8 ply)                               z 22.5 (1)  34.5 (3)  49.5 (3)  69.5 (4)  81.5 (4)
 \end{verbatim}}
-
-% ================= notes =================
-\section*{Read before cutting}
-\begin{enumerate}[leftmargin=1.4em,itemsep=2pt]
-  \item \textbf{Three duplicate cross members were removed} from the model — exact overlapping copies at (x 42½, z 19), (x 42½, z 66) and (x 23½, z 66). They would have added 3 × 29 in to the count.
-  \item \textbf{Plywood strips run ¼ in short.} Two kerfs across a 96-inch sheet leave the third strip at 31¾ in. Put those five short strips on the 24-inch panels and the 31-inch step so all ten 32~×~48 shelves are full depth.
-  \item \textbf{Check board length before the tight patterns.} \cutdim{50.5 + 25 + 18.5} leaves 1¾ in and \cutdim{62.5 + 30.5} leaves 2⅞ in; stud-grade 8-footers can run ¼ in short.
-  \item \textbf{The 24-inch 2×4 offcuts} (16 of them) are not used by this design.
-  \item \textbf{Materials in Fusion were set to Pine / Plywood, Finish.} Bodies had been carrying a Steel physical material, so mass properties were ~14× high. Appearances unchanged.
-\end{enumerate}
-
-\vfill
-{\footnotesize\textcolor{ink2}{Cut optimisation: exact cutting-stock ILP over all patterns that fit an 8-ft board with ⅛ in kerf (\cutdim{docs/cutstock.py}). Geometry read from the Fusion model via the Fusion MCP; positions in this sheet are design-space inches.}}
 
 \end{document}

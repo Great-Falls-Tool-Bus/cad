@@ -4,6 +4,7 @@
     ./cutstock.py          # 8 ft stock only (default)
     ./cutstock.py --all    # compare 8/10/12/16 ft and mixed stock
     ./cutstock.py --json   # machine-readable plan
+    ./cutstock.py --three-up  # three shelves up instead of four
 
 Exact ILP over every maximal cut pattern that fits a board, 1/8 in kerf,
 minimising total purchased length. Cut demands are the part counts from
@@ -71,6 +72,8 @@ def show(name, cuts, stocks):
 
 cuts_2x4 = {29.0:52, 31.0:2, 72.0:16}
 cuts_2x6 = {72.0:2, 62.5:6, 50.5:2, 30.5:4, 25.0:2, 18.5:2}
+if '--three-up' in sys.argv:   # drop the top level: two z78 frames (4 rails, 10 cross members)
+    cuts_2x4 = {29.0:42, 31.0:2, 72.0:12}
 out={}
 # Default: 8 ft stock only (what the local yard carries). Pass --all to compare mixed lengths.
 OPTIONS = [[96]] if '--all' not in sys.argv else [[96],[120],[144],[192],[96,120],[96,120,144],[96,120,144,192]]
