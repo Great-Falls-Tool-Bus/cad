@@ -27,7 +27,7 @@ The stock plan is the exact cutting-stock optimum for 8-foot boards with ⅛″ 
 | `CAD/bus_hybrid_assy.f3d` | Fusion archive of the whole design (bus body + shelves) |
 | `CAD/port_side_shelves.step` | The shelving assembly only |
 
-The Fusion tree is organised for reuse: 21 part components (one per cut length / plywood shape) placed inside frame sub-assemblies, and identical frames are one component placed several times — Bay A's z 31/46/78 frames are a single component ×3, Bay B's z 31/46 frames a single component ×2. Edit a frame once and every level that uses it follows.
+The Fusion tree is organised for reuse: 21 part components (one per cut length / plywood shape) placed inside frame sub-assemblies, and identical frames are one component placed several times: Bay A's z 31/46/78 frames are a single component ×3, Bay B's z 31/46 frames a single component ×2. Edit a frame once and every level that uses it follows.
 
 ```
 Port Side Shelves (Assembly)
@@ -49,9 +49,9 @@ Port Side Shelves (Assembly)
 ## Build notes
 
 - Cross members are 29″ = 32″ depth − two 1½″ rails. Rails are 72″ per bay; the low step is the only 31″ bay.
-- Plywood is crosscut into three 32 × 48 strips per sheet; two kerfs leave the third strip at 31¾″ — use those for the 24″ panels and the 31″ step so the ten full shelves stay full depth.
+- Plywood is crosscut into three 32 × 48 strips per sheet; two kerfs leave the third strip at 31¾″: use those for the 24″ panels and the 31″ step so the ten full shelves stay full depth.
 - Plywood notches are drawn with dimensions in the cut list (every unique panel); still check against the installed posts before cutting.
-- The 16 × 24″ 2×4 offcuts from the 72″ rails aren't used by this design — nothing here is shorter than 29″.
+- The 16 × 24″ 2×4 offcuts from the 72″ rails aren't used by this design: nothing here is shorter than 29″.
 
 Cheers,
 -Jess
