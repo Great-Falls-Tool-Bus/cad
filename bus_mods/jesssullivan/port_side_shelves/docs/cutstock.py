@@ -10,7 +10,7 @@ Exact ILP over every maximal cut pattern that fits a board, 1/8 in kerf,
 minimising total purchased length. Cut demands are the part counts from
 the Fusion model (see cut_list.tex).
 """
-import itertools, json, sys
+import json, sys
 from collections import Counter
 import numpy as np
 from scipy.optimize import milp, LinearConstraint, Bounds
@@ -18,27 +18,27 @@ KERF=0.125
 STOCK={96:8,120:10,144:12,192:16}
 
 def patterns(lengths, stock):
-    """all maximal count-vectors of cut lengths fitting in stock (with kerf between cuts)."""
+    """Return patterns that fit the stock and leave no room for another cut."""
     out=set()
     def rec(i, cur, used):
         if i==len(lengths):
             out.add(tuple(cur)); return
         L=lengths[i]
-        maxn=0
-        while True:
-            n=maxn+1
-            need=used+n*L+KERF*(sum(cur)+n-1) if (sum(cur)+n)>0 else 0
-            if need<=stock+1e-9: maxn=n
-            else: break
+        maxn = 0
+        earlier_cuts = sum(cur)
+        while used + (maxn + 1) * L + KERF * (earlier_cuts + maxn) <= stock + 1e-9:
+            maxn += 1
         for n in range(maxn,-1,-1):
             rec(i+1, cur+[n], used+n*L)
     rec(0,[],0)
-    # keep only maximal patterns (no piece can be added)
-    res=[]
+    res = []
     for p in out:
-        used=sum(n*L for n,L in zip(p,lengths))+KERF*max(sum(p)-1,0)
-        if all(used+L+KERF>stock+1e-9 for L in lengths) or sum(p)==0: 
-            if sum(p)>0: res.append(p)
+        count = sum(p)
+        if count == 0:
+            continue
+        used = sum(n * L for n, L in zip(p, lengths)) + KERF * (count - 1)
+        if all(used + L + KERF > stock + 1e-9 for L in lengths):
+            res.append(p)
     return res
 
 def solve(cuts, stocks, objective='length'):
@@ -72,10 +72,11 @@ def show(name, cuts, stocks):
 
 cuts_2x4 = {29.0:52, 31.0:2, 72.0:16}
 cuts_2x6 = {72.0:2, 62.5:6, 50.5:2, 30.5:4, 25.0:2, 18.5:2}
-if '--three-up' in sys.argv:   # drop the top level: two z78 frames (4 rails, 10 cross members)
+if '--three-up' in sys.argv:
+    # Removing the two z78 frames removes four rails and ten cross members.
     cuts_2x4 = {29.0:42, 31.0:2, 72.0:12}
 out={}
-# Default: 8 ft stock only (what the local yard carries). Pass --all to compare mixed lengths.
+# The local yard carries 8 ft stock.
 OPTIONS = [[96]] if '--all' not in sys.argv else [[96],[120],[144],[192],[96,120],[96,120,144],[96,120,144,192]]
 for name,cuts in [("2x4",cuts_2x4),("2x6",cuts_2x6)]:
     print("="*72); print(name, "cuts:", cuts, f"= {sum(L*n for L,n in cuts.items())/12:.1f} lf net")

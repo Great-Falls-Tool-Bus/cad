@@ -2,7 +2,6 @@ load("@buildifier_prebuilt//:rules.bzl", "buildifier")
 
 package(default_visibility = ["//visibility:public"])
 
-# Every document target in the repo, so `bazel build //:docs` builds all PDFs.
 filegroup(
     name = "docs",
     srcs = [
