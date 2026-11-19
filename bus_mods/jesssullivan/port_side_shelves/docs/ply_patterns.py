@@ -1,18 +1,15 @@
 #!/usr/bin/env python3
 """Render each unique plywood panel outline as a dimensioned TikZ figure.
 
-Input:  ply_outlines.json — top-face outlines of every 3/8 in body in the Fusion
-        model, harvested over the Fusion MCP (coordinates in inches relative to
-        each panel's own corner).
-Output: ply_patterns.tex — \\input by cut_list.tex.
-
-    ./ply_patterns.py            # regenerate ply_patterns.tex
+Read the top-face outlines of the Fusion model's 3/8 in panels from
+ply_outlines.json. Coordinates are inches from each panel's corner.
+cut_list.tex includes the generated ply_patterns.tex.
 """
 import json, os
 from collections import OrderedDict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SC = 0.105  # cm per inch
+DRAWING_CM_PER_INCH = 0.105
 
 def frac(v):
     v = round(v * 8) / 8; w = int(v); f = v - w
@@ -21,7 +18,7 @@ def frac(v):
 
 def notches(poly, d):
     """Horizontal polygon edges strictly inside the panel are notch bottoms.
-    An L-shaped cut shows up twice (two inner edges) — keep the deeper one."""
+    For an L-shaped cut, keep the deeper of its two inner edges."""
     found = {}
     n = len(poly)
     for i in range(n):
@@ -56,7 +53,7 @@ for it in items:
     pts = ' -- '.join(f"({x},{y})" for x, y in it['outer'])
     out.append(r"\begin{minipage}[t]{0.33\textwidth}\centering" "\n")
     out.append(r"{\small\bfseries " + short + r"}\quad{\footnotesize\textcolor{ink2}{×" + str(it['n']) + r"}}\\[2pt]" "\n")
-    out.append(f"\\begin{{tikzpicture}}[x={SC}cm,y={SC}cm,baseline]\n")
+    out.append(f"\\begin{{tikzpicture}}[x={DRAWING_CM_PER_INCH}cm,y={DRAWING_CM_PER_INCH}cm,baseline]\n")
     out.append(f"  \\fill[ply] {pts} -- cycle;\n  \\draw[ink,line width=0.5pt] {pts} -- cycle;\n")
     out.append(f"  \\draw[ink2,|-|,line width=0.3pt] (0,-3.2) -- ({w},-3.2) node[midway,below,font=\\scriptsize\\ttfamily,text=ink] {{{frac(w)}}};\n")
     out.append(f"  \\draw[ink2,|-|,line width=0.3pt] ({w}+3.2,0) -- ({w}+3.2,{d}) node[midway,right,font=\\scriptsize\\ttfamily,text=ink] {{{frac(d)}}};\n")

@@ -1,4 +1,3 @@
-% Port-side shelves — cut list / BOM
 % Built with: bazel build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list
 % Source geometry: CAD/bus_hybrid_assy.f3d (Fusion), component "Port Side Shelves (Assembly)"
 \documentclass[10pt,letterpaper]{article}
@@ -34,13 +33,12 @@
 \setlength{\parindent}{0pt}
 \renewcommand{\arraystretch}{1.15}
 
-% inches with fractions
 \newcommand{\inch}[1]{#1\,in}
 \newcommand{\lf}[1]{#1\,lf}
 \newcommand{\kerf}{\tfrac{1}{8}}
 \newcommand{\cutdim}[1]{\texttt{#1}}
 
-% ---- cut-pattern bar: \cutbar{stock}{ {len1, len2, ...} }{label}
+% Cut-pattern bar: \cutbar{stock}{ {len1, len2, ...} }{label}
 % scale: 1 in = 0.152 cm  ->  96 in = 14.6 cm
 \newcommand{\barscale}{0.152}
 \newcommand{\cutbar}[3]{%
@@ -60,7 +58,6 @@
 
 \begin{document}
 
-% ================= title block =================
 \begin{tabularx}{\textwidth}{@{}X r@{}}
   {\fontsize{21}{23}\selectfont\bfseries PORT-SIDE SHELVES\newline CUT LIST} &
   \begin{tabular}[b]{@{}ll@{}}
@@ -91,7 +88,6 @@ Every stick and sheet in the shelving unit, as a shopping list, per-board cut pa
 \end{center}
 Everything below is the four-shelf build.}}
 
-% ================= shopping list =================
 \section*{Shopping list}
 \begin{tabularx}{\textwidth}{@{}l r X r r@{}}
 \toprule
@@ -105,7 +101,6 @@ Everything below is the four-shelf build.}}
 
 \textcolor{ink2}{\small Waste on the 2×4s is almost entirely the 24-inch offcut left when a 72-inch rail comes out of an 8-footer (16 of them = 32 ft). Nothing in the design is shorter than 29 in, so they can't be reused here; keep them for blocking.}
 
-% ================= 2x4 =================
 \section*{2×4 — frames (34 boards)}
 \begin{minipage}[t]{0.46\textwidth}
 \begin{tabular}{@{}l r l@{}}
@@ -130,7 +125,6 @@ net & 70 & \cutdim{2722 in = 226.8 lf} \\
 \cutbar{96}{31,31,29}{1 × 8 ft}
 {\footnotesize\textcolor{ink2}{Bars to scale · shaded end is offcut: 24 in, 8¾ in, 4¾ in · kerf not drawn}}
 
-% ================= 2x6 =================
 \section*{2×6 — posts (10 boards)}
 \begin{minipage}[t]{0.46\textwidth}
 \begin{tabular}{@{}l r l@{}}
@@ -159,7 +153,6 @@ net & 18 & \cutdim{829 in = 69.1 lf} \\
 \cutbar{96}{50.5,25,18.5}{2 × 8 ft}
 {\footnotesize\textcolor{ink2}{Offcuts: 2⅞, 8⅜, 5⅜, 1¾ in. The 50½ + 25 + 18½ board leaves only 1¾ in — check that board is a full 96 before cutting.}}
 
-% ================= plywood =================
 \section*{⅜ in plywood — 15 panels from 5 sheets}
 Crosscut each 4×8 sheet across its length into three 32~×~48 strips (cuts at 32 and 64). Ten strips go up as-is; two are halved into 24~×~32; one is trimmed to 31~×~32 for the low step. Two strips are spare.
 
@@ -214,7 +207,6 @@ Every unique panel outline, read from the model. Notch callouts are \cutdim{offs
 \noindent\input{ply_patterns.tex}
 
 
-% ================= assembly =================
 \section*{How the parts are grouped in Fusion}
 Same 103 bodies, now as 21 reusable part components inside reusable frames (42 components total, down from 104). Identical frames are one component placed more than once, so editing a frame edits every level that uses it.
 
