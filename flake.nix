@@ -20,13 +20,15 @@
             buildifier
             tectonic
             git
+            just
+            openssh
             gh
             jq
             uv
           ];
           shellHook = ''
             echo "gftb cad dev shell"
-            echo "  bazelisk  $(bazelisk version 2>/dev/null | head -1)"
+            echo "  Bazel pin: $(cat ${./.bazelversion})"
             echo "  tectonic  $(tectonic --version 2>/dev/null | head -1)"
             echo "  build the cut list: bazelisk build //bus_mods/jesssullivan/port_side_shelves/docs:cut_list"
           '';
