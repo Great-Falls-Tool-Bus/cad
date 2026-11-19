@@ -84,7 +84,7 @@ gftb_chain() {
   case "$hook" in
     pre-commit|commit-msg)
       if command -v huskycat >/dev/null 2>&1; then
-        huskycat hook "$hook" "$@" || gftb_warn "huskycat hook $hook failed" "Install the hooks" "huskycat spec verify"
+        huskycat hook "$hook" "$@" --complete-staged || gftb_warn "huskycat hook $hook failed" "Install the hooks" "huskycat spec verify"
       else
         gftb_warn "Huskycat is missing from PATH" "Install the hooks" "command -v huskycat"
       fi
