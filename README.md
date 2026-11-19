@@ -17,6 +17,9 @@ bus_mods/<creator>/<mod>/
 └─ pdfs/             the compiled build sheets, checked in so nobody needs a toolchain to read them
 ```
 
+Work from a fork. Enter the Nix shell with `nix develop` or `direnv allow`, then run `just setup` to install the shared Git hooks.
+Use `just hooks-check` to compare them with the public organization mirror and `just hooks-test` to test them locally.
+
 Documents are LaTeX compiled with [rules_tectonic](https://github.com/Jesssullivan/rules_tectonic). No TeX install is needed.
 
 ```sh
