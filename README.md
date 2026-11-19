@@ -1,7 +1,11 @@
 # cad
 
 GFTB shelving and related CAD drawings for the Great Falls Tool Bus.
-Mods follow the [VoronUsers](https://github.com/VoronDesign/VoronUsers) layout. The index is [`bus_mods/README.md`](bus_mods/README.md).
+Mods follow the [VoronUsers](https://github.com/VoronDesign/VoronUsers) layout.
+
+| Creator | Mod | Description | Vehicle | Last changed |
+| --- | --- | --- | --- | --- |
+| jesssullivan | [Port-side shelves](bus_mods/jesssullivan/port_side_shelves) | Stick-framed 2×4 / 2×6 shelving with ⅜″ ply decks, three stepped bays | bus-hybrid | 2026-09-14 |
 
 ```
 bus_mods/<creator>/<mod>/
